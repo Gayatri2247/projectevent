@@ -1,0 +1,3616 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+
+  <meta
+    name="description"
+    content="Aura Decor Studio creates elegant wedding decor, event styling, home interiors, office decor and festive experiences across Ahmedabad."
+  />
+
+  <meta
+    name="keywords"
+    content="Ahmedabad decorators, wedding decor Ahmedabad, event decoration, home interiors, office decor, luxury decor"
+  />
+
+  <meta name="author" content="Aura Decor Studio" />
+
+  <!-- Security-oriented browser policies.
+       For production, configure CSP and other headers at the server level too. -->
+  <meta
+    http-equiv="Content-Security-Policy"
+    content="
+      default-src 'self';
+      img-src 'self' https: data:;
+      style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+      font-src 'self' https://fonts.gstatic.com;
+      script-src 'self' 'unsafe-inline';
+      connect-src 'self';
+      object-src 'none';
+      base-uri 'self';
+      form-action 'self';
+      frame-ancestors 'none';
+    "
+  />
+
+  <meta
+    http-equiv="X-Content-Type-Options"
+    content="nosniff"
+  />
+
+  <meta
+    http-equiv="Referrer-Policy"
+    content="strict-origin-when-cross-origin"
+  />
+
+  <title>Aura Decor Studio | Luxury Decor & Interiors in Ahmedabad</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    /* =========================================================
+       1. DESIGN TOKENS
+    ========================================================= */
+
+    :root {
+      --primary: #173f3b;
+      --primary-dark: #0d2926;
+
+      --accent: #c8a96b;
+      --accent-light: #e4d3ad;
+
+      --cream: #f7f4ed;
+      --cream-dark: #ece7dc;
+
+      --white: #ffffff;
+      --black: #111111;
+
+      --text: #202725;
+      --muted: #68706c;
+
+      --border: rgba(23, 63, 59, 0.12);
+
+      --shadow-sm:
+        0 8px 30px rgba(18, 35, 32, 0.06);
+
+      --shadow-lg:
+        0 25px 70px rgba(18, 35, 32, 0.12);
+
+      --radius-sm: 10px;
+      --radius-md: 18px;
+      --radius-lg: 28px;
+
+      --container: 1180px;
+
+      --transition:
+        250ms cubic-bezier(.2, .8, .2, 1);
+    }
+
+    /* =========================================================
+       2. RESET
+    ========================================================= */
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "DM Sans", sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    body.menu-open {
+      overflow: hidden;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      object-fit: cover;
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      font-family: "Playfair Display", serif;
+      line-height: 1.15;
+      font-weight: 600;
+    }
+
+    ::selection {
+      background: var(--accent);
+      color: var(--white);
+    }
+
+    /* =========================================================
+       3. UTILITIES
+    ========================================================= */
+
+    .container {
+      width: min(
+        calc(100% - 40px),
+        var(--container)
+      );
+
+      margin-inline: auto;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+
+      margin-bottom: 18px;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 30px;
+      height: 1px;
+      background: currentColor;
+    }
+
+    .section-heading {
+      max-width: 700px;
+      margin-bottom: 45px;
+    }
+
+    .section-heading.center {
+      text-align: center;
+      margin-inline: auto;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(34px, 5vw, 58px);
+      color: var(--primary);
+      margin-bottom: 16px;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      font-size: 16px;
+      max-width: 650px;
+    }
+
+    .section-heading.center p {
+      margin-inline: auto;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+
+      min-height: 50px;
+      padding: 0 24px;
+
+      border: 1px solid transparent;
+      border-radius: 999px;
+
+      background: var(--primary);
+      color: var(--white);
+
+      font-size: 14px;
+      font-weight: 700;
+
+      transition:
+        transform var(--transition),
+        background var(--transition),
+        color var(--transition),
+        box-shadow var(--transition);
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      background: var(--primary-dark);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .btn-light {
+      background: var(--white);
+      color: var(--primary);
+    }
+
+    .btn-light:hover {
+      background: var(--accent);
+      color: var(--white);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--primary);
+      border-color: var(--primary);
+    }
+
+    .btn-outline:hover {
+      background: var(--primary);
+      color: var(--white);
+    }
+
+    .btn-arrow::after {
+      content: "→";
+      font-size: 18px;
+      transition: transform var(--transition);
+    }
+
+    .btn-arrow:hover::after {
+      transform: translateX(4px);
+    }
+
+    /* =========================================================
+       4. HEADER
+    ========================================================= */
+
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+
+      background: rgba(247, 244, 237, 0.82);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+
+      border-bottom: 1px solid transparent;
+
+      transition:
+        background var(--transition),
+        border-color var(--transition),
+        box-shadow var(--transition);
+    }
+
+    .header.scrolled {
+      background: rgba(255, 255, 255, 0.94);
+      border-color: var(--border);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .nav {
+      min-height: 82px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 30px;
+    }
+
+    .logo {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+    }
+
+    .logo-main {
+      font-family: "Playfair Display", serif;
+      font-size: 25px;
+      color: var(--primary);
+    }
+
+    .logo-sub {
+      margin-top: 6px;
+
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .nav-links a {
+      position: relative;
+
+      font-size: 13px;
+      font-weight: 600;
+
+      color: var(--text);
+    }
+
+    .nav-links a::after {
+      content: "";
+
+      position: absolute;
+      left: 0;
+      bottom: -7px;
+
+      width: 0;
+      height: 1px;
+
+      background: var(--accent);
+
+      transition: width var(--transition);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .mobile-toggle {
+      display: none;
+
+      width: 44px;
+      height: 44px;
+
+      border: 1px solid var(--border);
+      border-radius: 50%;
+
+      background: var(--white);
+      color: var(--primary);
+
+      font-size: 22px;
+    }
+
+    /* =========================================================
+       5. HERO
+    ========================================================= */
+
+    .hero {
+      min-height: 100vh;
+      padding: 150px 0 80px;
+
+      display: flex;
+      align-items: center;
+
+      background:
+        radial-gradient(
+          circle at 80% 20%,
+          rgba(200, 169, 107, 0.16),
+          transparent 30%
+        ),
+        var(--cream);
+
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+
+      position: absolute;
+      width: 420px;
+      height: 420px;
+
+      border-radius: 50%;
+
+      border: 1px solid rgba(200, 169, 107, 0.18);
+
+      right: -160px;
+      bottom: -120px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+
+      gap: 70px;
+      align-items: center;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero h1 {
+      font-size: clamp(46px, 6vw, 78px);
+      letter-spacing: -0.025em;
+
+      color: var(--primary);
+
+      margin-bottom: 24px;
+    }
+
+    .hero h1 em {
+      color: var(--accent);
+      font-style: normal;
+    }
+
+    .hero-description {
+      max-width: 590px;
+
+      font-size: 17px;
+      color: var(--muted);
+
+      margin-bottom: 32px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+
+      margin-bottom: 38px;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .hero-meta span {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hero-meta span::before {
+      content: "✦";
+      color: var(--accent);
+    }
+
+    .hero-visual {
+      position: relative;
+    }
+
+    .hero-image {
+      position: relative;
+
+      min-height: 610px;
+
+      border-radius: var(--radius-lg);
+
+      overflow: hidden;
+
+      box-shadow: var(--shadow-lg);
+
+      background:
+        linear-gradient(
+          135deg,
+          #315b54,
+          #162f2c
+        );
+    }
+
+    .hero-image::after {
+      content: "";
+
+      position: absolute;
+      inset: 0;
+
+      background:
+        linear-gradient(
+          to top,
+          rgba(10, 28, 26, 0.6),
+          transparent 50%
+        );
+    }
+
+    .hero-image img {
+      height: 100%;
+      position: absolute;
+      inset: 0;
+    }
+
+    .hero-image-placeholder {
+      height: 100%;
+      min-height: 610px;
+
+      display: flex;
+      align-items: flex-end;
+
+      padding: 38px;
+
+      color: var(--white);
+
+      background:
+        linear-gradient(
+          135deg,
+          #315b54,
+          #173f3b 45%,
+          #c8a96b
+        );
+    }
+
+    .hero-image-placeholder h2 {
+      position: relative;
+      z-index: 2;
+
+      max-width: 400px;
+
+      font-size: 34px;
+    }
+
+    .floating-card {
+      position: absolute;
+      z-index: 4;
+
+      left: -35px;
+      bottom: 35px;
+
+      width: 220px;
+
+      padding: 20px;
+
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(12px);
+
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      border-radius: 18px;
+
+      box-shadow: var(--shadow-lg);
+    }
+
+    .floating-card strong {
+      display: block;
+
+      font-family: "Playfair Display", serif;
+      font-size: 27px;
+      color: var(--primary);
+    }
+
+    .floating-card span {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* =========================================================
+       6. TRUST BAR
+    ========================================================= */
+
+    .trust-bar {
+      background: var(--primary);
+      color: var(--white);
+
+      padding: 24px 0;
+    }
+
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+
+      padding-right: 20px;
+
+      border-right: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .trust-item:last-child {
+      border-right: none;
+    }
+
+    .trust-icon {
+      width: 42px;
+      height: 42px;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 50%;
+
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--accent-light);
+
+      font-size: 17px;
+    }
+
+    .trust-item strong {
+      display: block;
+      font-size: 13px;
+    }
+
+    .trust-item span {
+      display: block;
+
+      font-size: 11px;
+      color: rgba(255, 255, 255, 0.65);
+    }
+
+    /* =========================================================
+       7. SERVICES
+    ========================================================= */
+
+    .services {
+      padding: 110px 0;
+    }
+
+    .services-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 20px;
+    }
+
+    .service-card {
+      position: relative;
+
+      padding: 32px;
+
+      min-height: 270px;
+
+      background: var(--white);
+
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+
+      overflow: hidden;
+
+      transition:
+        transform var(--transition),
+        box-shadow var(--transition),
+        border-color var(--transition);
+    }
+
+    .service-card::before {
+      content: "";
+
+      position: absolute;
+
+      top: 0;
+      left: 0;
+
+      width: 100%;
+      height: 4px;
+
+      background: var(--accent);
+
+      transform: scaleX(0);
+      transform-origin: left;
+
+      transition: transform var(--transition);
+    }
+
+    .service-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-lg);
+      border-color: transparent;
+    }
+
+    .service-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .service-number {
+      font-size: 12px;
+      font-weight: 700;
+
+      color: var(--accent);
+
+      margin-bottom: 28px;
+    }
+
+    .service-card h3 {
+      font-size: 27px;
+      color: var(--primary);
+
+      margin-bottom: 12px;
+    }
+
+    .service-card p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .service-link {
+      position: absolute;
+
+      right: 28px;
+      bottom: 24px;
+
+      width: 38px;
+      height: 38px;
+
+      display: grid;
+      place-items: center;
+
+      border: 1px solid var(--border);
+      border-radius: 50%;
+
+      color: var(--primary);
+
+      transition:
+        background var(--transition),
+        color var(--transition);
+    }
+
+    .service-card:hover .service-link {
+      background: var(--primary);
+      color: var(--white);
+    }
+
+    /* =========================================================
+       8. ABOUT
+    ========================================================= */
+
+    .about {
+      padding: 110px 0;
+
+      background: var(--white);
+    }
+
+    .about-grid {
+      display: grid;
+
+      grid-template-columns: 0.9fr 1.1fr;
+
+      gap: 80px;
+      align-items: center;
+    }
+
+    .about-visual {
+      position: relative;
+    }
+
+    .about-main {
+      min-height: 530px;
+
+      border-radius: var(--radius-lg);
+
+      background:
+        linear-gradient(
+          145deg,
+          #173f3b,
+          #315b54 55%,
+          #c8a96b
+        );
+
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-main::before {
+      content: "AURA";
+
+      position: absolute;
+
+      top: 35px;
+      right: -20px;
+
+      font-family: "Playfair Display", serif;
+      font-size: 120px;
+
+      color: rgba(255,255,255,.08);
+      transform: rotate(90deg);
+    }
+
+    .about-badge {
+      position: absolute;
+
+      right: -30px;
+      bottom: 30px;
+
+      width: 150px;
+      height: 150px;
+
+      display: grid;
+      place-items: center;
+
+      text-align: center;
+
+      border-radius: 50%;
+
+      background: var(--accent);
+      color: var(--white);
+
+      border: 10px solid var(--white);
+
+      font-family: "Playfair Display", serif;
+      font-size: 19px;
+    }
+
+    .about-content h2 {
+      font-size: clamp(38px, 5vw, 58px);
+
+      color: var(--primary);
+
+      margin-bottom: 20px;
+    }
+
+    .about-content > p {
+      color: var(--muted);
+
+      margin-bottom: 30px;
+
+      font-size: 16px;
+    }
+
+    .about-points {
+      display: grid;
+      gap: 15px;
+
+      margin-bottom: 30px;
+    }
+
+    .about-point {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+
+      font-size: 14px;
+    }
+
+    .about-point span {
+      width: 24px;
+      height: 24px;
+
+      flex: 0 0 auto;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 50%;
+
+      background: var(--cream);
+      color: var(--accent);
+
+      font-size: 12px;
+    }
+
+    /* =========================================================
+       9. PORTFOLIO
+    ========================================================= */
+
+    .portfolio {
+      padding: 110px 0;
+    }
+
+    .portfolio-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(12, 1fr);
+
+      grid-auto-rows: 260px;
+
+      gap: 18px;
+    }
+
+    .project {
+      position: relative;
+
+      overflow: hidden;
+
+      border-radius: var(--radius-md);
+
+      background:
+        linear-gradient(
+          135deg,
+          #315b54,
+          #173f3b
+        );
+
+      min-height: 250px;
+    }
+
+    .project:nth-child(1) {
+      grid-column: span 7;
+      grid-row: span 2;
+    }
+
+    .project:nth-child(2) {
+      grid-column: span 5;
+    }
+
+    .project:nth-child(3) {
+      grid-column: span 5;
+    }
+
+    .project:nth-child(4) {
+      grid-column: span 4;
+    }
+
+    .project:nth-child(5) {
+      grid-column: span 8;
+    }
+
+    .project-bg {
+      position: absolute;
+      inset: 0;
+
+      background:
+        linear-gradient(
+          135deg,
+          #315b54,
+          #173f3b 55%,
+          #c8a96b
+        );
+
+      transition:
+        transform 600ms cubic-bezier(.2,.8,.2,1);
+    }
+
+    .project:nth-child(2) .project-bg {
+      background:
+        linear-gradient(
+          135deg,
+          #a98760,
+          #eee0c9
+        );
+    }
+
+    .project:nth-child(3) .project-bg {
+      background:
+        linear-gradient(
+          135deg,
+          #6c817d,
+          #d8ddd7
+        );
+    }
+
+    .project:nth-child(4) .project-bg {
+      background:
+        linear-gradient(
+          135deg,
+          #d7aa61,
+          #8c5d35
+        );
+    }
+
+    .project:nth-child(5) .project-bg {
+      background:
+        linear-gradient(
+          135deg,
+          #203d39,
+          #718b83
+        );
+    }
+
+    .project:hover .project-bg {
+      transform: scale(1.07);
+    }
+
+    .project-overlay {
+      position: absolute;
+      inset: 0;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+
+      padding: 28px;
+
+      background:
+        linear-gradient(
+          to top,
+          rgba(9, 25, 23, 0.78),
+          transparent 65%
+        );
+
+      color: var(--white);
+    }
+
+    .project-overlay span {
+      font-size: 10px;
+      font-weight: 700;
+
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+
+      color: var(--accent-light);
+
+      margin-bottom: 8px;
+    }
+
+    .project-overlay h3 {
+      font-size: 27px;
+    }
+
+    /* =========================================================
+       10. PROCESS
+    ========================================================= */
+
+    .process {
+      padding: 110px 0;
+
+      background: var(--primary);
+      color: var(--white);
+    }
+
+    .process .section-heading h2 {
+      color: var(--white);
+    }
+
+    .process .section-heading p {
+      color: rgba(255,255,255,.65);
+    }
+
+    .process-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(4, 1fr);
+
+      gap: 20px;
+    }
+
+    .process-card {
+      padding: 30px;
+
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: var(--radius-md);
+
+      background: rgba(255,255,255,.04);
+
+      transition:
+        transform var(--transition),
+        background var(--transition);
+    }
+
+    .process-card:hover {
+      transform: translateY(-6px);
+      background: rgba(255,255,255,.08);
+    }
+
+    .process-number {
+      font-family: "Playfair Display", serif;
+
+      font-size: 42px;
+
+      color: var(--accent-light);
+
+      margin-bottom: 35px;
+    }
+
+    .process-card h3 {
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+
+    .process-card p {
+      font-size: 13px;
+
+      color: rgba(255,255,255,.62);
+    }
+
+    /* =========================================================
+       11. TESTIMONIALS
+    ========================================================= */
+
+    .testimonials {
+      padding: 110px 0;
+      background: var(--cream);
+    }
+
+    .testimonial-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 20px;
+    }
+
+    .testimonial {
+      padding: 32px;
+
+      background: var(--white);
+
+      border-radius: var(--radius-md);
+
+      border: 1px solid var(--border);
+
+      box-shadow: var(--shadow-sm);
+    }
+
+    .stars {
+      color: var(--accent);
+
+      letter-spacing: 4px;
+
+      margin-bottom: 22px;
+    }
+
+    .testimonial blockquote {
+      font-family: "Playfair Display", serif;
+
+      font-size: 21px;
+      line-height: 1.5;
+
+      color: var(--primary);
+
+      margin-bottom: 25px;
+    }
+
+    .client {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .client-avatar {
+      width: 42px;
+      height: 42px;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 50%;
+
+      background: var(--primary);
+      color: var(--white);
+
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .client strong {
+      display: block;
+      font-size: 13px;
+    }
+
+    .client span {
+      display: block;
+
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    /* =========================================================
+       12. CTA
+    ========================================================= */
+
+    .cta-section {
+      padding: 80px 0;
+    }
+
+    .cta-box {
+      position: relative;
+
+      overflow: hidden;
+
+      padding: 75px 60px;
+
+      border-radius: var(--radius-lg);
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--primary),
+          #28564f
+        );
+
+      color: var(--white);
+
+      text-align: center;
+    }
+
+    .cta-box::before,
+    .cta-box::after {
+      content: "";
+
+      position: absolute;
+
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 50%;
+    }
+
+    .cta-box::before {
+      width: 300px;
+      height: 300px;
+
+      left: -100px;
+      top: -160px;
+    }
+
+    .cta-box::after {
+      width: 400px;
+      height: 400px;
+
+      right: -180px;
+      bottom: -260px;
+    }
+
+    .cta-box-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .cta-box h2 {
+      font-size: clamp(36px, 5vw, 58px);
+
+      margin-bottom: 16px;
+    }
+
+    .cta-box p {
+      max-width: 650px;
+
+      margin: 0 auto 28px;
+
+      color: rgba(255,255,255,.7);
+    }
+
+    /* =========================================================
+       13. CONTACT
+    ========================================================= */
+
+    .contact {
+      padding: 110px 0;
+
+      background: var(--white);
+    }
+
+    .contact-grid {
+      display: grid;
+
+      grid-template-columns:
+        0.8fr 1.2fr;
+
+      gap: 70px;
+
+      align-items: start;
+    }
+
+    .contact-content h2 {
+      font-size: clamp(38px, 5vw, 58px);
+
+      color: var(--primary);
+
+      margin-bottom: 20px;
+    }
+
+    .contact-content > p {
+      color: var(--muted);
+
+      margin-bottom: 30px;
+    }
+
+    .contact-details {
+      display: grid;
+      gap: 20px;
+    }
+
+    .contact-detail {
+      display: flex;
+      gap: 14px;
+    }
+
+    .contact-icon {
+      width: 44px;
+      height: 44px;
+
+      flex: 0 0 auto;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 50%;
+
+      background: var(--cream);
+      color: var(--primary);
+    }
+
+    .contact-detail strong {
+      display: block;
+
+      color: var(--primary);
+
+      font-size: 13px;
+
+      margin-bottom: 3px;
+    }
+
+    .contact-detail span {
+      color: var(--muted);
+
+      font-size: 13px;
+    }
+
+    .contact-form-wrapper {
+      padding: 35px;
+
+      background: var(--cream);
+
+      border-radius: var(--radius-md);
+
+      border: 1px solid var(--border);
+    }
+
+    .form {
+      display: grid;
+      gap: 16px;
+    }
+
+    .form-row {
+      display: grid;
+
+      grid-template-columns:
+        repeat(2, 1fr);
+
+      gap: 16px;
+    }
+
+    .field {
+      display: grid;
+      gap: 7px;
+    }
+
+    .field label {
+      font-size: 12px;
+      font-weight: 700;
+
+      color: var(--primary);
+    }
+
+    .field input,
+    .field select,
+    .field textarea {
+      width: 100%;
+
+      border: 1px solid rgba(23,63,59,.15);
+
+      border-radius: 10px;
+
+      background: var(--white);
+
+      color: var(--text);
+
+      padding: 13px 14px;
+
+      outline: none;
+
+      transition:
+        border-color var(--transition),
+        box-shadow var(--transition);
+    }
+
+    .field textarea {
+      min-height: 130px;
+      resize: vertical;
+    }
+
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus {
+      border-color: var(--primary);
+
+      box-shadow:
+        0 0 0 4px rgba(23,63,59,.08);
+    }
+
+    .form-message {
+      display: none;
+
+      padding: 12px;
+
+      border-radius: 8px;
+
+      font-size: 13px;
+    }
+
+    .form-message.show {
+      display: block;
+    }
+
+    .form-message.success {
+      background: #e8f5ee;
+      color: #166534;
+    }
+
+    .form-message.error {
+      background: #fcecec;
+      color: #991b1b;
+    }
+
+    /* Honeypot */
+    .hp-field {
+      position: absolute !important;
+
+      left: -9999px !important;
+
+      width: 1px !important;
+      height: 1px !important;
+
+      overflow: hidden !important;
+    }
+
+    /* =========================================================
+       14. FOOTER
+    ========================================================= */
+
+    footer {
+      padding: 55px 0 25px;
+
+      background: #102522;
+
+      color: rgba(255,255,255,.65);
+    }
+
+    .footer-grid {
+      display: grid;
+
+      grid-template-columns:
+        1.5fr 1fr 1fr 1fr;
+
+      gap: 40px;
+
+      padding-bottom: 40px;
+
+      border-bottom: 1px solid rgba(255,255,255,.1);
+    }
+
+    .footer-brand .logo-main {
+      color: var(--white);
+    }
+
+    .footer-brand p {
+      max-width: 350px;
+
+      margin-top: 18px;
+
+      font-size: 13px;
+    }
+
+    .footer-column h4 {
+      font-family: "DM Sans", sans-serif;
+
+      font-size: 12px;
+
+      letter-spacing: .1em;
+      text-transform: uppercase;
+
+      color: var(--accent-light);
+
+      margin-bottom: 18px;
+    }
+
+    .footer-column ul {
+      display: grid;
+      gap: 10px;
+    }
+
+    .footer-column a {
+      font-size: 13px;
+
+      transition: color var(--transition);
+    }
+
+    .footer-column a:hover {
+      color: var(--white);
+    }
+
+    .footer-bottom {
+      padding-top: 22px;
+
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+
+      font-size: 11px;
+    }
+
+    /* =========================================================
+       15. FLOATING WHATSAPP
+    ========================================================= */
+
+    .floating-contact {
+      position: fixed;
+
+      right: 22px;
+      bottom: 22px;
+
+      z-index: 900;
+
+      width: 56px;
+      height: 56px;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 50%;
+
+      background: #1f9d62;
+      color: var(--white);
+
+      box-shadow: var(--shadow-lg);
+
+      font-size: 22px;
+
+      transition:
+        transform var(--transition);
+    }
+
+    .floating-contact:hover {
+      transform: scale(1.08);
+    }
+
+    /* =========================================================
+       16. SCROLL REVEAL
+    ========================================================= */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(25px);
+
+      transition:
+        opacity 700ms ease,
+        transform 700ms ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* =========================================================
+       17. RESPONSIVE
+    ========================================================= */
+
+    @media (max-width: 1000px) {
+      .hero-grid,
+      .about-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-content {
+        max-width: 750px;
+      }
+
+      .hero-image {
+        min-height: 500px;
+      }
+
+      .hero-image-placeholder {
+        min-height: 500px;
+      }
+
+      .services-grid {
+        grid-template-columns:
+          repeat(2, 1fr);
+      }
+
+      .process-grid {
+        grid-template-columns:
+          repeat(2, 1fr);
+      }
+
+      .testimonial-grid {
+        grid-template-columns:
+          repeat(2, 1fr);
+      }
+
+      .footer-grid {
+        grid-template-columns:
+          repeat(2, 1fr);
+      }
+
+      .about-main {
+        min-height: 450px;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .container {
+        width: min(
+          calc(100% - 28px),
+          var(--container)
+        );
+      }
+
+      .nav {
+        min-height: 70px;
+      }
+
+      .nav-links,
+      .nav-cta .btn {
+        display: none;
+      }
+
+      .mobile-toggle {
+        display: grid;
+        place-items: center;
+      }
+
+      .nav.mobile-active .nav-links {
+        position: fixed;
+
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+
+        top: 70px;
+        left: 0;
+
+        width: 100%;
+        height: calc(100vh - 70px);
+
+        padding: 35px 25px;
+
+        background: var(--white);
+
+        box-shadow: var(--shadow-lg);
+      }
+
+      .nav.mobile-active .nav-links a {
+        font-size: 18px;
+      }
+
+      .hero {
+        padding-top: 115px;
+      }
+
+      .hero-grid {
+        gap: 45px;
+      }
+
+      .hero h1 {
+        font-size: clamp(43px, 13vw, 62px);
+      }
+
+      .hero-image {
+        min-height: 420px;
+      }
+
+      .hero-image-placeholder {
+        min-height: 420px;
+      }
+
+      .floating-card {
+        left: 15px;
+        bottom: 20px;
+      }
+
+      .trust-grid {
+        grid-template-columns:
+          repeat(2, 1fr);
+      }
+
+      .trust-item {
+        border-right: none;
+      }
+
+      .services-grid,
+      .process-grid,
+      .testimonial-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .portfolio-grid {
+        grid-template-columns: 1fr;
+        grid-auto-rows: 250px;
+      }
+
+      .project:nth-child(n) {
+        grid-column: span 1;
+        grid-row: span 1;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-form-wrapper {
+        padding: 22px;
+      }
+
+      .cta-box {
+        padding: 55px 25px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =======================================================
+       HEADER
+  ======================================================== -->
+
+  <header class="header" id="header">
+    <div class="container">
+
+      <div class="nav" id="nav">
+
+        <a href="#home" class="logo" aria-label="Aura Decor Studio Home">
+          <span class="logo-main">Aura</span>
+          <span class="logo-sub">Decor Studio</span>
+        </a>
+
+        <nav
+          class="nav-links"
+          id="navLinks"
+          aria-label="Main navigation"
+        >
+          <a href="#services">Services</a>
+          <a href="#about">About</a>
+          <a href="#portfolio">Portfolio</a>
+          <a href="#process">Process</a>
+          <a href="#contact">Contact</a>
+        </nav>
+
+        <div class="nav-cta">
+          <a href="#contact" class="btn">
+            Get a Quote
+          </a>
+
+          <button
+            class="mobile-toggle"
+            id="mobileToggle"
+            type="button"
+            aria-label="Open navigation menu"
+            aria-expanded="false"
+          >
+            ☰
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+  </header>
+
+
+  <!-- =======================================================
+       HERO
+  ======================================================== -->
+
+  <main id="home">
+
+    <section class="hero">
+
+      <div class="container">
+
+        <div class="hero-grid">
+
+          <div class="hero-content reveal">
+
+            <span class="eyebrow">
+              Ahmedabad · Gujarat
+            </span>
+
+            <h1>
+              Spaces that feel
+              <em>beautifully yours.</em>
+            </h1>
+
+            <p class="hero-description">
+              From intimate celebrations to complete interiors,
+              Aura Decor Studio creates elegant spaces with thoughtful
+              styling, refined details and seamless execution.
+            </p>
+
+            <div class="hero-actions">
+
+              <a href="#contact" class="btn btn-arrow">
+                Start Your Project
+              </a>
+
+              <a
+                href="#portfolio"
+                class="btn btn-outline"
+              >
+                Explore Portfolio
+              </a>
+
+            </div>
+
+            <div class="hero-meta">
+
+              <span>Custom Concepts</span>
+              <span>End-to-End Execution</span>
+              <span>Ahmedabad & Nearby</span>
+
+            </div>
+
+          </div>
+
+
+          <div class="hero-visual reveal">
+
+            <!--
+              Replace this placeholder with a real hero image.
+
+              Example:
+
+              <img
+                src="assets/images/hero.jpg"
+                alt="Luxury wedding decor created by Aura Decor Studio"
+              />
+            -->
+
+            <div class="hero-image">
+
+              <div class="hero-image-placeholder">
+
+                <div>
+                  <span class="eyebrow">
+                    Design · Detail · Experience
+                  </span>
+
+                  <h2>
+                    Thoughtful decor for moments worth remembering.
+                  </h2>
+                </div>
+
+              </div>
+
+            </div>
+
+            <div class="floating-card">
+              <strong>End-to-End</strong>
+              <span>
+                Concept, styling, sourcing, installation & finishing
+              </span>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         TRUST BAR
+    ====================================================== -->
+
+    <section class="trust-bar">
+
+      <div class="container">
+
+        <div class="trust-grid">
+
+          <div class="trust-item">
+            <div class="trust-icon">✦</div>
+
+            <div>
+              <strong>Custom Design</strong>
+              <span>Designed around your vision</span>
+            </div>
+          </div>
+
+          <div class="trust-item">
+            <div class="trust-icon">✓</div>
+
+            <div>
+              <strong>Complete Execution</strong>
+              <span>From planning to final setup</span>
+            </div>
+          </div>
+
+          <div class="trust-item">
+            <div class="trust-icon">◇</div>
+
+            <div>
+              <strong>Premium Details</strong>
+              <span>Lighting, textures & styling</span>
+            </div>
+          </div>
+
+          <div class="trust-item">
+            <div class="trust-icon">⌂</div>
+
+            <div>
+              <strong>Local Expertise</strong>
+              <span>Ahmedabad & surrounding areas</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         SERVICES
+    ====================================================== -->
+
+    <section
+      class="services"
+      id="services"
+    >
+
+      <div class="container">
+
+        <div class="section-heading reveal">
+
+          <span class="eyebrow">
+            Our Expertise
+          </span>
+
+          <h2>
+            Designed around the way you want to feel.
+          </h2>
+
+          <p>
+            Whether it is a once-in-a-lifetime celebration or
+            an everyday space, we bring together concept,
+            color, lighting and detail to create a cohesive experience.
+          </p>
+
+        </div>
+
+
+        <div class="services-grid">
+
+          <article class="service-card reveal">
+
+            <div class="service-number">01</div>
+
+            <h3>Wedding Decor</h3>
+
+            <p>
+              Mandaps, stages, entryways, floral styling,
+              lighting and complete venue transformations
+              for every wedding function.
+            </p>
+
+            <a
+              href="#contact"
+              class="service-link"
+              aria-label="Enquire about wedding decor"
+            >
+              →
+            </a>
+
+          </article>
+
+
+          <article class="service-card reveal">
+
+            <div class="service-number">02</div>
+
+            <h3>Event Decor</h3>
+
+            <p>
+              Birthdays, anniversaries, engagements,
+              baby showers, celebrations and corporate events
+              designed around your occasion.
+            </p>
+
+            <a
+              href="#contact"
+              class="service-link"
+              aria-label="Enquire about event decor"
+            >
+              →
+            </a>
+
+          </article>
+
+
+          <article class="service-card reveal">
+
+            <div class="service-number">03</div>
+
+            <h3>Home Interiors</h3>
+
+            <p>
+              Living rooms, bedrooms, dining areas and
+              entryways styled with furniture, lighting,
+              textiles and curated accents.
+            </p>
+
+            <a
+              href="#contact"
+              class="service-link"
+              aria-label="Enquire about home interiors"
+            >
+              →
+            </a>
+
+          </article>
+
+
+          <article class="service-card reveal">
+
+            <div class="service-number">04</div>
+
+            <h3>Office & Commercial</h3>
+
+            <p>
+              Reception areas, meeting rooms, workspaces
+              and brand environments designed to make
+              a memorable impression.
+            </p>
+
+            <a
+              href="#contact"
+              class="service-link"
+              aria-label="Enquire about office decor"
+            >
+              →
+            </a>
+
+          </article>
+
+
+          <article class="service-card reveal">
+
+            <div class="service-number">05</div>
+
+            <h3>Festival Decor</h3>
+
+            <p>
+              Diwali, Navratri, Christmas, New Year and
+              seasonal installations combining traditional
+              character with modern styling.
+            </p>
+
+            <a
+              href="#contact"
+              class="service-link"
+              aria-label="Enquire about festival decor"
+            >
+              →
+            </a>
+
+          </article>
+
+
+          <article class="service-card reveal">
+
+            <div class="service-number">06</div>
+
+            <h3>Custom Concepts</h3>
+
+            <p>
+              Have something different in mind?
+              Tell us your idea and we will develop
+              a concept around your space, occasion and budget.
+            </p>
+
+            <a
+              href="#contact"
+              class="service-link"
+              aria-label="Enquire about custom decor"
+            >
+              →
+            </a>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         ABOUT
+    ====================================================== -->
+
+    <section
+      class="about"
+      id="about"
+    >
+
+      <div class="container">
+
+        <div class="about-grid">
+
+          <div class="about-visual reveal">
+
+            <div class="about-main"></div>
+
+            <div class="about-badge">
+              Made<br />
+              With<br />
+              Detail
+            </div>
+
+          </div>
+
+
+          <div class="about-content reveal">
+
+            <span class="eyebrow">
+              About Aura
+            </span>
+
+            <h2>
+              Creativity with practical execution.
+            </h2>
+
+            <p>
+              Aura Decor Studio is an Ahmedabad-based decoration
+              and styling studio creating memorable environments
+              for weddings, celebrations, homes and professional spaces.
+            </p>
+
+            <p>
+              Our approach combines creative direction with
+              disciplined execution. Every project is considered
+              from the first concept to the final setup.
+            </p>
+
+            <div class="about-points">
+
+              <div class="about-point">
+                <span>✓</span>
+                <div>
+                  <strong>Concept-first planning</strong><br />
+                  Every project begins with your requirements,
+                  space and desired experience.
+                </div>
+              </div>
+
+              <div class="about-point">
+                <span>✓</span>
+                <div>
+                  <strong>Thoughtful styling</strong><br />
+                  Color, texture, lighting and proportions
+                  are considered together.
+                </div>
+              </div>
+
+              <div class="about-point">
+                <span>✓</span>
+                <div>
+                  <strong>Reliable execution</strong><br />
+                  Coordinated sourcing, installation and finishing
+                  keep the process organized.
+                </div>
+              </div>
+
+            </div>
+
+            <a href="#contact" class="btn btn-arrow">
+              Discuss Your Idea
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         PORTFOLIO
+    ====================================================== -->
+
+    <section
+      class="portfolio"
+      id="portfolio"
+    >
+
+      <div class="container">
+
+        <div class="section-heading center reveal">
+
+          <span class="eyebrow">
+            Selected Work
+          </span>
+
+          <h2>
+            A glimpse into our world.
+          </h2>
+
+          <p>
+            Replace these demo projects with your actual
+            wedding, interior, event and festival photographs
+            before publishing.
+          </p>
+
+        </div>
+
+
+        <div class="portfolio-grid">
+
+          <article class="project reveal">
+
+            <div class="project-bg"></div>
+
+            <div class="project-overlay">
+
+              <span>Wedding</span>
+
+              <h3>
+                Royal Celebration
+              </h3>
+
+            </div>
+
+          </article>
+
+
+          <article class="project reveal">
+
+            <div class="project-bg"></div>
+
+            <div class="project-overlay">
+
+              <span>Interior</span>
+
+              <h3>
+                Modern Living
+              </h3>
+
+            </div>
+
+          </article>
+
+
+          <article class="project reveal">
+
+            <div class="project-bg"></div>
+
+            <div class="project-overlay">
+
+              <span>Commercial</span>
+
+              <h3>
+                Refined Workspace
+              </h3>
+
+            </div>
+
+          </article>
+
+
+          <article class="project reveal">
+
+            <div class="project-bg"></div>
+
+            <div class="project-overlay">
+
+              <span>Festival</span>
+
+              <h3>
+                Diwali Glow
+              </h3>
+
+            </div>
+
+          </article>
+
+
+          <article class="project reveal">
+
+            <div class="project-bg"></div>
+
+            <div class="project-overlay">
+
+              <span>Event</span>
+
+              <h3>
+                Intimate Celebration
+              </h3>
+
+            </div>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         PROCESS
+    ====================================================== -->
+
+    <section
+      class="process"
+      id="process"
+    >
+
+      <div class="container">
+
+        <div class="section-heading reveal">
+
+          <span class="eyebrow">
+            Our Process
+          </span>
+
+          <h2>
+            From first idea to final detail.
+          </h2>
+
+          <p>
+            A simple, transparent approach designed to keep
+            your project moving without unnecessary complexity.
+          </p>
+
+        </div>
+
+
+        <div class="process-grid">
+
+          <article class="process-card reveal">
+
+            <div class="process-number">
+              01
+            </div>
+
+            <h3>
+              Discover
+            </h3>
+
+            <p>
+              We understand your occasion, space,
+              preferences, timeline and budget.
+            </p>
+
+          </article>
+
+
+          <article class="process-card reveal">
+
+            <div class="process-number">
+              02
+            </div>
+
+            <h3>
+              Design
+            </h3>
+
+            <p>
+              We develop a visual direction with
+              suitable themes, colors and styling.
+            </p>
+
+          </article>
+
+
+          <article class="process-card reveal">
+
+            <div class="process-number">
+              03
+            </div>
+
+            <h3>
+              Execute
+            </h3>
+
+            <p>
+              Our team coordinates sourcing,
+              preparation, installation and styling.
+            </p>
+
+          </article>
+
+
+          <article class="process-card reveal">
+
+            <div class="process-number">
+              04
+            </div>
+
+            <h3>
+              Experience
+            </h3>
+
+            <p>
+              You enjoy the finished space while
+              we take care of the final details.
+            </p>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         TESTIMONIALS
+    ====================================================== -->
+
+    <section class="testimonials">
+
+      <div class="container">
+
+        <div class="section-heading center reveal">
+
+          <span class="eyebrow">
+            Client Experiences
+          </span>
+
+          <h2>
+            Designed to be remembered.
+          </h2>
+
+        </div>
+
+
+        <div class="testimonial-grid">
+
+          <article class="testimonial reveal">
+
+            <div class="stars">
+              ★★★★★
+            </div>
+
+            <blockquote>
+              “Aura transformed our wedding venue
+              into something that felt completely ours.”
+            </blockquote>
+
+            <div class="client">
+
+              <div class="client-avatar">
+                PR
+              </div>
+
+              <div>
+                <strong>
+                  Priya & Rahul
+                </strong>
+
+                <span>
+                  Wedding Decor
+                </span>
+              </div>
+
+            </div>
+
+          </article>
+
+
+          <article class="testimonial reveal">
+
+            <div class="stars">
+              ★★★★★
+            </div>
+
+            <blockquote>
+              “The space feels brighter, larger and
+              much more elegant than before.”
+            </blockquote>
+
+            <div class="client">
+
+              <div class="client-avatar">
+                MS
+              </div>
+
+              <div>
+                <strong>
+                  Mehul S.
+                </strong>
+
+                <span>
+                  Home Interior Styling
+                </span>
+              </div>
+
+            </div>
+
+          </article>
+
+
+          <article class="testimonial reveal">
+
+            <div class="stars">
+              ★★★★★
+            </div>
+
+            <blockquote>
+              “Professional execution and excellent
+              attention to the smallest details.”
+            </blockquote>
+
+            <div class="client">
+
+              <div class="client-avatar">
+                ZS
+              </div>
+
+              <div>
+                <strong>
+                  Zenith Solutions
+                </strong>
+
+                <span>
+                  Commercial Decor
+                </span>
+              </div>
+
+            </div>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         CTA
+    ====================================================== -->
+
+    <section class="cta-section">
+
+      <div class="container">
+
+        <div class="cta-box reveal">
+
+          <div class="cta-box-content">
+
+            <span class="eyebrow">
+              Let's Create Something Beautiful
+            </span>
+
+            <h2>
+              Have a space or celebration in mind?
+            </h2>
+
+            <p>
+              Tell us what you are planning and we will
+              help you turn the idea into a practical
+              decoration concept.
+            </p>
+
+            <a href="#contact" class="btn btn-light">
+              Request a Consultation
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         CONTACT
+    ====================================================== -->
+
+    <section
+      class="contact"
+      id="contact"
+    >
+
+      <div class="container">
+
+        <div class="contact-grid">
+
+          <div class="contact-content reveal">
+
+            <span class="eyebrow">
+              Start a Conversation
+            </span>
+
+            <h2>
+              Let's talk about your project.
+            </h2>
+
+            <p>
+              Share a few details about your event, home,
+              office or celebration. We will review your
+              requirements and get back to you.
+            </p>
+
+
+            <div class="contact-details">
+
+              <div class="contact-detail">
+
+                <div class="contact-icon">
+                  ☎
+                </div>
+
+                <div>
+                  <strong>Phone</strong>
+
+                  <span>
+                    +91 98XXX XXXXX
+                  </span>
+                </div>
+
+              </div>
+
+
+              <div class="contact-detail">
+
+                <div class="contact-icon">
+                  @
+                </div>
+
+                <div>
+                  <strong>Email</strong>
+
+                  <span>
+                    hello@auradecorstudio.in
+                  </span>
+                </div>
+
+              </div>
+
+
+              <div class="contact-detail">
+
+                <div class="contact-icon">
+                  ⌂
+                </div>
+
+                <div>
+                  <strong>Studio</strong>
+
+                  <span>
+                    Ahmedabad, Gujarat
+                  </span>
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="contact-form-wrapper reveal">
+
+            <!--
+              SECURITY NOTE:
+
+              This form currently demonstrates client-side validation only.
+
+              When connected to a backend:
+
+              1. Validate ALL values server-side.
+              2. Sanitize/encode output.
+              3. Add CSRF protection.
+              4. Add rate limiting.
+              5. Store secrets only on the server.
+              6. Use HTTPS.
+              7. Validate uploaded files if uploads are added.
+              8. Never trust client-side validation.
+            -->
+
+            <form
+              class="form"
+              id="contactForm"
+              action="#"
+              method="POST"
+              novalidate
+            >
+
+              <!-- Honeypot anti-spam field -->
+              <div
+                class="hp-field"
+                aria-hidden="true"
+              >
+                <label for="website">
+                  Website
+                </label>
+
+                <input
+                  type="text"
+                  id="website"
+                  name="website"
+                  tabindex="-1"
+                  autocomplete="off"
+                />
+              </div>
+
+
+              <div class="form-row">
+
+                <div class="field">
+
+                  <label for="name">
+                    Full Name *
+                  </label>
+
+                  <input
+                    id="name"
+                    name="name"
+                    type="text"
+                    required
+                    minlength="2"
+                    maxlength="80"
+                    autocomplete="name"
+                    placeholder="Your name"
+                  />
+
+                </div>
+
+
+                <div class="field">
+
+                  <label for="phone">
+                    Phone *
+                  </label>
+
+                  <input
+                    id="phone"
+                    name="phone"
+                    type="tel"
+                    required
+                    maxlength="15"
+                    autocomplete="tel"
+                    placeholder="+91 XXXXX XXXXX"
+                  />
+
+                </div>
+
+              </div>
+
+
+              <div class="form-row">
+
+                <div class="field">
+
+                  <label for="email">
+                    Email *
+                  </label>
+
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    required
+                    maxlength="120"
+                    autocomplete="email"
+                    placeholder="you@example.com"
+                  />
+
+                </div>
+
+
+                <div class="field">
+
+                  <label for="service">
+                    Service *
+                  </label>
+
+                  <select
+                    id="service"
+                    name="service"
+                    required
+                  >
+
+                    <option value="">
+                      Select service
+                    </option>
+
+                    <option>
+                      Wedding Decor
+                    </option>
+
+                    <option>
+                      Event Decor
+                    </option>
+
+                    <option>
+                      Home Interiors
+                    </option>
+
+                    <option>
+                      Office & Commercial
+                    </option>
+
+                    <option>
+                      Festival Decor
+                    </option>
+
+                    <option>
+                      Custom Concept
+                    </option>
+
+                  </select>
+
+                </div>
+
+              </div>
+
+
+              <div class="form-row">
+
+                <div class="field">
+
+                  <label for="location">
+                    Project Location
+                  </label>
+
+                  <input
+                    id="location"
+                    name="location"
+                    type="text"
+                    maxlength="120"
+                    autocomplete="street-address"
+                    placeholder="Ahmedabad / nearby"
+                  />
+
+                </div>
+
+
+                <div class="field">
+
+                  <label for="budget">
+                    Approx. Budget
+                  </label>
+
+                  <select
+                    id="budget"
+                    name="budget"
+                  >
+
+                    <option value="">
+                      Select range
+                    </option>
+
+                    <option>
+                      Under ₹25,000
+                    </option>
+
+                    <option>
+                      ₹25,000 – ₹50,000
+                    </option>
+
+                    <option>
+                      ₹50,000 – ₹1,00,000
+                    </option>
+
+                    <option>
+                      ₹1,00,000+
+                    </option>
+
+                    <option>
+                      Not decided
+                    </option>
+
+                  </select>
+
+                </div>
+
+              </div>
+
+
+              <div class="field">
+
+                <label for="message">
+                  Tell us about your project *
+                </label>
+
+                <textarea
+                  id="message"
+                  name="message"
+                  required
+                  minlength="10"
+                  maxlength="1500"
+                  placeholder="Tell us about your event, date, space, theme, approximate size, etc."
+                ></textarea>
+
+              </div>
+
+
+              <div
+                id="formMessage"
+                class="form-message"
+                role="alert"
+              ></div>
+
+
+              <button
+                type="submit"
+                class="btn btn-arrow"
+              >
+                Send Enquiry
+              </button>
+
+            </form>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- =======================================================
+       FOOTER
+  ======================================================== -->
+
+  <footer>
+
+    <div class="container">
+
+      <div class="footer-grid">
+
+        <div class="footer-brand">
+
+          <div class="logo">
+            <span class="logo-main">
+              Aura
+            </span>
+
+            <span class="logo-sub">
+              Decor Studio
+            </span>
+          </div>
+
+          <p>
+            Elegant decoration and styling for weddings,
+            events, homes, offices and celebrations across
+            Ahmedabad and surrounding areas.
+          </p>
+
+        </div>
+
+
+        <div class="footer-column">
+
+          <h4>Explore</h4>
+
+          <ul>
+            <li>
+              <a href="#about">About</a>
+            </li>
+
+            <li>
+              <a href="#services">Services</a>
+            </li>
+
+            <li>
+              <a href="#portfolio">Portfolio</a>
+            </li>
+
+            <li>
+              <a href="#process">Process</a>
+            </li>
+          </ul>
+
+        </div>
+
+
+        <div class="footer-column">
+
+          <h4>Services</h4>
+
+          <ul>
+            <li>
+              <a href="#services">
+                Wedding Decor
+              </a>
+            </li>
+
+            <li>
+              <a href="#services">
+                Event Decor
+              </a>
+            </li>
+
+            <li>
+              <a href="#services">
+                Home Interiors
+              </a>
+            </li>
+
+            <li>
+              <a href="#services">
+                Office Decor
+              </a>
+            </li>
+          </ul>
+
+        </div>
+
+
+        <div class="footer-column">
+
+          <h4>Contact</h4>
+
+          <ul>
+
+            <li>
+              <a href="#contact">
+                Get a Quote
+              </a>
+            </li>
+
+            <li>
+              <a href="mailto:hello@auradecorstudio.in">
+                Email Us
+              </a>
+            </li>
+
+            <li>
+              <a href="tel:+9198XXXXXXXX">
+                Call Us
+              </a>
+            </li>
+
+          </ul>
+
+        </div>
+
+      </div>
+
+
+      <div class="footer-bottom">
+
+        <span>
+          © 2026 Aura Decor Studio. All rights reserved.
+        </span>
+
+        <span>
+          Designed with intention.
+        </span>
+
+      </div>
+
+    </div>
+
+  </footer>
+
+
+  <!-- =======================================================
+       FLOATING CONTACT
+  ======================================================== -->
+
+  <!--
+    Replace XXXXXXXX with the actual WhatsApp number.
+    Format should contain country code and no spaces/symbols.
+  -->
+
+  <a
+    class="floating-contact"
+    href="https://wa.me/91XXXXXXXXXX"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Chat with Aura Decor Studio on WhatsApp"
+  >
+    ✆
+  </a>
+
+
+  <!-- =======================================================
+       JAVASCRIPT
+  ======================================================== -->
+
+  <script>
+    "use strict";
+
+    /* =========================================================
+       HEADER SCROLL EFFECT
+    ========================================================= */
+
+    const header =
+      document.getElementById("header");
+
+    window.addEventListener(
+      "scroll",
+      () => {
+
+        if (window.scrollY > 20) {
+          header.classList.add("scrolled");
+        } else {
+          header.classList.remove("scrolled");
+        }
+
+      },
+      {
+        passive: true
+      }
+    );
+
+
+    /* =========================================================
+       MOBILE MENU
+    ========================================================= */
+
+    const nav =
+      document.getElementById("nav");
+
+    const mobileToggle =
+      document.getElementById("mobileToggle");
+
+    const navLinks =
+      document.querySelectorAll(".nav-links a");
+
+
+    function closeMenu() {
+
+      nav.classList.remove(
+        "mobile-active"
+      );
+
+      document.body.classList.remove(
+        "menu-open"
+      );
+
+      mobileToggle.setAttribute(
+        "aria-expanded",
+        "false"
+      );
+
+      mobileToggle.textContent = "☰";
+    }
+
+
+    mobileToggle.addEventListener(
+      "click",
+      () => {
+
+        const active =
+          nav.classList.toggle(
+            "mobile-active"
+          );
+
+        document.body.classList.toggle(
+          "menu-open",
+          active
+        );
+
+        mobileToggle.setAttribute(
+          "aria-expanded",
+          String(active)
+        );
+
+        mobileToggle.textContent =
+          active ? "×" : "☰";
+
+      }
+    );
+
+
+    navLinks.forEach(
+      (link) => {
+
+        link.addEventListener(
+          "click",
+          closeMenu
+        );
+
+      }
+    );
+
+
+    /* =========================================================
+       SCROLL REVEAL
+    ========================================================= */
+
+    const revealElements =
+      document.querySelectorAll(
+        ".reveal"
+      );
+
+
+    const revealObserver =
+      new IntersectionObserver(
+        (entries, observer) => {
+
+          entries.forEach(
+            (entry) => {
+
+              if (
+                entry.isIntersecting
+              ) {
+
+                entry.target.classList.add(
+                  "visible"
+                );
+
+                observer.unobserve(
+                  entry.target
+                );
+
+              }
+
+            }
+          );
+
+        },
+        {
+          threshold: 0.12
+        }
+      );
+
+
+    revealElements.forEach(
+      (element) => {
+
+        revealObserver.observe(
+          element
+        );
+
+      }
+    );
+
+
+    /* =========================================================
+       CONTACT FORM VALIDATION
+    ========================================================= */
+
+    const form =
+      document.getElementById(
+        "contactForm"
+      );
+
+    const formMessage =
+      document.getElementById(
+        "formMessage"
+      );
+
+
+    function showMessage(
+      message,
+      type
+    ) {
+
+      formMessage.textContent =
+        message;
+
+      formMessage.className =
+        "form-message show " +
+        type;
+
+    }
+
+
+    function sanitizeClientInput(
+      value
+    ) {
+
+      /*
+        This is NOT a replacement for
+        server-side sanitization.
+
+        It simply normalizes user input
+        before client-side processing.
+      */
+
+      return value
+        .trim()
+        .replace(/\s+/g, " ");
+
+    }
+
+
+    function validPhone(
+      phone
+    ) {
+
+      /*
+        Allows common Indian/international
+        phone formatting without accepting
+        arbitrary long input.
+      */
+
+      const normalized =
+        phone.replace(
+          /[\s\-().]/g,
+          ""
+        );
+
+      return /^\+?\d{10,15}$/.test(
+        normalized
+      );
+
+    }
+
+
+    form.addEventListener(
+      "submit",
+      async (event) => {
+
+        event.preventDefault();
+
+        formMessage.className =
+          "form-message";
+
+        formMessage.textContent =
+          "";
+
+
+        /* Honeypot */
+
+        const honeypot =
+          document
+            .getElementById(
+              "website"
+            )
+            .value
+            .trim();
+
+
+        if (honeypot !== "") {
+
+          /*
+            Silently stop obvious bots.
+          */
+
+          return;
+
+        }
+
+
+        /* Collect values */
+
+        const name =
+          sanitizeClientInput(
+            document
+              .getElementById("name")
+              .value
+          );
+
+        const phone =
+          sanitizeClientInput(
+            document
+              .getElementById("phone")
+              .value
+          );
+
+        const email =
+          sanitizeClientInput(
+            document
+              .getElementById("email")
+              .value
+          );
+
+        const service =
+          sanitizeClientInput(
+            document
+              .getElementById("service")
+              .value
+          );
+
+        const location =
+          sanitizeClientInput(
+            document
+              .getElementById("location")
+              .value
+          );
+
+        const budget =
+          sanitizeClientInput(
+            document
+              .getElementById("budget")
+              .value
+          );
+
+        const message =
+          sanitizeClientInput(
+            document
+              .getElementById("message")
+              .value
+          );
+
+
+        /* Basic validation */
+
+        if (
+          name.length < 2 ||
+          name.length > 80
+        ) {
+
+          showMessage(
+            "Please enter a valid name.",
+            "error"
+          );
+
+          return;
+
+        }
+
+
+        if (!validPhone(phone)) {
+
+          showMessage(
+            "Please enter a valid phone number.",
+            "error"
+          );
+
+          return;
+
+        }
+
+
+        const emailPattern =
+          /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+
+        if (
+          !emailPattern.test(email)
+        ) {
+
+          showMessage(
+            "Please enter a valid email address.",
+            "error"
+          );
+
+          return;
+
+        }
+
+
+        if (!service) {
+
+          showMessage(
+            "Please select a service.",
+            "error"
+          );
+
+          return;
+
+        }
+
+
+        if (
+          message.length < 10 ||
+          message.length > 1500
+        ) {
+
+          showMessage(
+            "Please provide at least 10 characters about your project.",
+            "error"
+          );
+
+          return;
+
+        }
+
+
+        /*
+          IMPORTANT:
+
+          This demo does NOT send the form anywhere.
+
+          Replace the section below with your secure
+          backend/API request.
+
+          Example architecture:
+
+          Browser
+              ↓
+          HTTPS
+              ↓
+          Backend API
+              ↓
+          Server-side validation
+              ↓
+          Rate limiting / CSRF
+              ↓
+          Database / Email service
+        */
+
+
+        showMessage(
+          "Your enquiry has been validated. Connect this form to your backend/API to submit it.",
+          "success"
+        );
+
+
+        /*
+          Never insert user input into HTML using innerHTML.
+
+          textContent is intentionally used above
+          to reduce XSS risk.
+        */
+
+      }
+    );
+
+
+    /* =========================================================
+       ESC KEY — CLOSE MOBILE MENU
+    ========================================================= */
+
+    document.addEventListener(
+      "keydown",
+      (event) => {
+
+        if (
+          event.key === "Escape"
+        ) {
+
+          closeMenu();
+
+        }
+
+      }
+    );
+
+  </script>
+
+</body>
+</html>
+```

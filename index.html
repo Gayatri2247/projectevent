@@ -1428,6 +1428,24 @@
       color: var(--primary);
     }
 
+    .map-link {
+      display: inline-block;
+    }
+
+    .map-link-hint {
+      display: block;
+
+      margin-top: 5px;
+
+      color: var(--accent) !important;
+
+      font-size: 11px !important;
+      font-weight: 600;
+
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+
     .contact-form-wrapper {
       padding: 35px;
 
@@ -2821,18 +2839,21 @@
               <div class="contact-detail">
 
                 <div class="contact-icon" aria-hidden="true">
-                  ⌂
+                  ⌖
                 </div>
 
                 <div>
                   <strong>Studio</strong>
 
                   <a
+                    class="map-link"
                     href="https://www.google.com/maps/search/?api=1&amp;query=58%2C%20Krishna%20Park%20Society%2C%20Nandej%2C%20Barejadi%2C%20Ahmedabad"
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label="Open Pratiksha Events studio address in Google Maps"
                   >
                     58, Krishna Park Society, Nandej, Barejadi, Ahmedabad
+                    <span class="map-link-hint">View on Google Maps</span>
                   </a>
                 </div>
 

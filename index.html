@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,6 +19,23 @@
   />
 
   <meta name="author" content="Pravin Rajput, Pratiksha Events" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph / social preview — most enquiries for a business like this
+       get shared as links over WhatsApp, so this matters a lot -->
+  <meta property="og:type" content="business.business" />
+  <meta property="og:title" content="Pratiksha Events | Decoration & Photography in Ahmedabad" />
+  <meta property="og:description" content="Balloon decoration, wedding decoration, Haldi & Mehendi setups, doli services, car decoration and event photography across Ahmedabad." />
+  <meta property="og:locale" content="en_IN" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Pratiksha Events | Decoration & Photography in Ahmedabad" />
+  <meta name="twitter:description" content="Balloon decoration, wedding decoration, Haldi & Mehendi setups, doli services, car decoration and event photography across Ahmedabad." />
+
+  <!-- Simple inline favicon so the browser tab isn't blank / doesn't 404 -->
+  <link
+    rel="icon"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23173f3b'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-size='30' fill='%23c8a96b' text-anchor='middle'%3EP%3C/text%3E%3C/svg%3E"
+  />
 
   <!-- Security-oriented browser policies.
        For production, configure CSP and other headers at the server level too. -->
@@ -168,6 +184,41 @@
       color: var(--white);
     }
 
+    /* Visible keyboard focus for every interactive element */
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    select:focus-visible,
+    textarea:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: 16px;
+      top: -60px;
+
+      z-index: 2000;
+
+      padding: 12px 18px;
+
+      background: var(--primary);
+      color: var(--white);
+
+      border-radius: 8px;
+
+      font-size: 13px;
+      font-weight: 700;
+
+      transition: top var(--transition);
+    }
+
+    .skip-link:focus {
+      top: 16px;
+    }
+
     /* =========================================================
        3. UTILITIES
     ========================================================= */
@@ -257,6 +308,12 @@
       transform: translateY(-3px);
       background: var(--primary-dark);
       box-shadow: var(--shadow-sm);
+    }
+
+    .btn[aria-disabled="true"] {
+      opacity: 0.6;
+      pointer-events: none;
+      transform: none;
     }
 
     .btn-light {
@@ -554,7 +611,6 @@
 
     .hero-image-placeholder {
       height: 100%;
-      min-height: 610px;
 
       display: flex;
       align-items: flex-end;
@@ -757,6 +813,8 @@
     .service-card p {
       color: var(--muted);
       font-size: 14px;
+
+      padding-right: 40px;
     }
 
     .service-link {
@@ -827,18 +885,17 @@
     }
 
     .about-main::before {
-      content: "AURA";
+      content: "PE";
 
       position: absolute;
 
-      top: 35px;
-      right: -20px;
+      top: 20px;
+      right: -10px;
 
       font-family: "Playfair Display", serif;
-      font-size: 120px;
+      font-size: 150px;
 
       color: rgba(255,255,255,.08);
-      transform: rotate(90deg);
     }
 
     .about-badge {
@@ -1023,7 +1080,8 @@
         );
     }
 
-    .project:hover .project-bg {
+    .project:hover .project-bg,
+    .project:focus-within .project-bg {
       transform: scale(1.07);
     }
 
@@ -1250,6 +1308,8 @@
 
       border: 1px solid rgba(255,255,255,.1);
       border-radius: 50%;
+
+      pointer-events: none;
     }
 
     .cta-box::before {
@@ -1357,10 +1417,15 @@
       margin-bottom: 3px;
     }
 
-    .contact-detail span {
+    .contact-detail span,
+    .contact-detail a {
       color: var(--muted);
 
       font-size: 13px;
+    }
+
+    .contact-detail a:hover {
+      color: var(--primary);
     }
 
     .contact-form-wrapper {
@@ -1635,10 +1700,6 @@
         min-height: 500px;
       }
 
-      .hero-image-placeholder {
-        min-height: 500px;
-      }
-
       .services-grid {
         grid-template-columns:
           repeat(2, 1fr);
@@ -1726,13 +1787,11 @@
         min-height: 420px;
       }
 
-      .hero-image-placeholder {
-        min-height: 420px;
-      }
-
       .floating-card {
         left: 15px;
         bottom: 20px;
+        width: calc(100% - 60px);
+        max-width: 260px;
       }
 
       .trust-grid {
@@ -1779,6 +1838,20 @@
       .footer-bottom {
         flex-direction: column;
       }
+
+      .floating-contact {
+        right: 16px;
+        bottom: 16px;
+        width: 50px;
+        height: 50px;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .hero-actions .btn,
+      .hero-actions .btn-outline {
+        width: 100%;
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -1803,6 +1876,8 @@
 </head>
 
 <body>
+
+  <a href="#home" class="skip-link">Skip to content</a>
 
   <!-- =======================================================
        HEADER
@@ -1841,8 +1916,9 @@
             type="button"
             aria-label="Open navigation menu"
             aria-expanded="false"
+            aria-controls="navLinks"
           >
-            ☰
+            <span aria-hidden="true">☰</span>
           </button>
         </div>
 
@@ -1965,7 +2041,7 @@
         <div class="trust-grid">
 
           <div class="trust-item">
-            <div class="trust-icon">✦</div>
+            <div class="trust-icon" aria-hidden="true">✦</div>
 
             <div>
               <strong>Custom Design</strong>
@@ -1974,7 +2050,7 @@
           </div>
 
           <div class="trust-item">
-            <div class="trust-icon">✓</div>
+            <div class="trust-icon" aria-hidden="true">✓</div>
 
             <div>
               <strong>Complete Execution</strong>
@@ -1983,7 +2059,7 @@
           </div>
 
           <div class="trust-item">
-            <div class="trust-icon">◇</div>
+            <div class="trust-icon" aria-hidden="true">◇</div>
 
             <div>
               <strong>Premium Details</strong>
@@ -1992,7 +2068,7 @@
           </div>
 
           <div class="trust-item">
-            <div class="trust-icon">⌂</div>
+            <div class="trust-icon" aria-hidden="true">⌂</div>
 
             <div>
               <strong>Local Expertise</strong>
@@ -2053,7 +2129,7 @@
             <a
               href="#contact"
               class="service-link"
-              aria-label="Enquire about wedding decor"
+              aria-label="Enquire about wedding decoration"
             >
               →
             </a>
@@ -2075,7 +2151,7 @@
             <a
               href="#contact"
               class="service-link"
-              aria-label="Enquire about event decor"
+              aria-label="Enquire about balloon decoration"
             >
               →
             </a>
@@ -2119,7 +2195,7 @@
             <a
               href="#contact"
               class="service-link"
-              aria-label="Enquire about office decor"
+              aria-label="Enquire about doli services"
             >
               →
             </a>
@@ -2163,7 +2239,7 @@
             <a
               href="#contact"
               class="service-link"
-              aria-label="Enquire about custom decor"
+              aria-label="Enquire about event photography"
             >
               →
             </a>
@@ -2227,7 +2303,7 @@
             <div class="about-points">
 
               <div class="about-point">
-                <span>✓</span>
+                <span aria-hidden="true">✓</span>
                 <div>
                   <strong>Concept-first planning</strong><br />
                   Every project begins with your requirements,
@@ -2236,7 +2312,7 @@
               </div>
 
               <div class="about-point">
-                <span>✓</span>
+                <span aria-hidden="true">✓</span>
                 <div>
                   <strong>Thoughtful styling</strong><br />
                   Color, texture, lighting and proportions
@@ -2245,7 +2321,7 @@
               </div>
 
               <div class="about-point">
-                <span>✓</span>
+                <span aria-hidden="true">✓</span>
                 <div>
                   <strong>Reliable execution</strong><br />
                   Coordinated sourcing, installation and finishing
@@ -2322,7 +2398,7 @@
 
             <div class="project-overlay">
 
-              <span>Interior</span>
+              <span>Birthday</span>
 
               <h3>
                 Balloon Birthday
@@ -2524,7 +2600,7 @@
 
           <article class="testimonial reveal">
 
-            <div class="stars">
+            <div class="stars" aria-hidden="true">
               ★★★★★
             </div>
 
@@ -2535,7 +2611,7 @@
 
             <div class="client">
 
-              <div class="client-avatar">
+              <div class="client-avatar" aria-hidden="true">
                 PR
               </div>
 
@@ -2556,18 +2632,18 @@
 
           <article class="testimonial reveal">
 
-            <div class="stars">
+            <div class="stars" aria-hidden="true">
               ★★★★★
             </div>
 
             <blockquote>
-              “The space feels brighter, larger and
-              much more elegant than before.”
+              “The space feels brighter, warmer and
+              much more festive than before.”
             </blockquote>
 
             <div class="client">
 
-              <div class="client-avatar">
+              <div class="client-avatar" aria-hidden="true">
                 MS
               </div>
 
@@ -2577,7 +2653,7 @@
                 </strong>
 
                 <span>
-                  Home Interior Styling
+                  Home Celebration Decor
                 </span>
               </div>
 
@@ -2588,7 +2664,7 @@
 
           <article class="testimonial reveal">
 
-            <div class="stars">
+            <div class="stars" aria-hidden="true">
               ★★★★★
             </div>
 
@@ -2599,7 +2675,7 @@
 
             <div class="client">
 
-              <div class="client-avatar">
+              <div class="client-avatar" aria-hidden="true">
                 ZS
               </div>
 
@@ -2697,16 +2773,16 @@
 
               <div class="contact-detail">
 
-                <div class="contact-icon">
+                <div class="contact-icon" aria-hidden="true">
                   ☎
                 </div>
 
                 <div>
                   <strong>Phone</strong>
 
-                  <span>
+                  <a href="tel:+919081569778">
                     +91 90815 69778
-                  </span>
+                  </a>
                 </div>
 
               </div>
@@ -2714,7 +2790,7 @@
 
               <div class="contact-detail">
 
-                <div class="contact-icon">
+                <div class="contact-icon" aria-hidden="true">
                   @
                 </div>
 
@@ -2731,7 +2807,7 @@
 
               <div class="contact-detail">
 
-                <div class="contact-icon">
+                <div class="contact-icon" aria-hidden="true">
                   ⌂
                 </div>
 
@@ -3019,6 +3095,7 @@
                 <a
                   id="whatsappOption"
                   class="btn"
+                  href="#"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -3028,6 +3105,7 @@
                 <a
                   id="emailOption"
                   class="btn btn-outline"
+                  href="#"
                 >
                   Send via Email
                 </a>
@@ -3212,7 +3290,7 @@
     rel="noopener noreferrer"
     aria-label="Chat with Pratiksha Events on WhatsApp"
   >
-    ✆
+    <span aria-hidden="true">✆</span>
   </a>
 
 
@@ -3276,7 +3354,12 @@
         "false"
       );
 
-      mobileToggle.textContent = "☰";
+      mobileToggle.setAttribute(
+        "aria-label",
+        "Open navigation menu"
+      );
+
+      mobileToggle.querySelector("span").textContent = "☰";
     }
 
 
@@ -3299,7 +3382,12 @@
           String(active)
         );
 
-        mobileToggle.textContent =
+        mobileToggle.setAttribute(
+          "aria-label",
+          active ? "Close navigation menu" : "Open navigation menu"
+        );
+
+        mobileToggle.querySelector("span").textContent =
           active ? "×" : "☰";
 
       }
@@ -3404,7 +3492,27 @@
         "submitEnquiry"
       );
 
+    const eventDateInput =
+      document.getElementById(
+        "eventDate"
+      );
+
+    /* Never allow picking a date in the past */
+    eventDateInput.min =
+      new Date().toISOString().split("T")[0];
+
     let pendingEmail = null;
+
+    function resetEmailButton() {
+
+      emailOption.textContent =
+        "Send via Email";
+
+      emailOption.removeAttribute(
+        "aria-disabled"
+      );
+
+    }
 
     emailOption.addEventListener(
       "click",
@@ -3506,16 +3614,20 @@
         } catch (error) {
 
           showMessage(
-            "The email could not be sent. Please try WhatsApp or call us.",
+            "The email service didn't respond. Opening your email app instead — please hit send there, or try WhatsApp.",
             "error"
           );
 
-          emailOption.textContent =
-            "Send via Email";
+          resetEmailButton();
 
-          emailOption.removeAttribute(
-            "aria-disabled"
-          );
+          /*
+            Graceful degradation: if the AJAX request fails
+            (offline, blocked, service down), fall back to a
+            plain mailto link so the enquiry still gets a path out.
+          */
+
+          window.location.href =
+            emailOption.getAttribute("href");
 
         }
 
@@ -3599,6 +3711,8 @@
           "is-hidden"
         );
 
+        resetEmailButton();
+
 
         /* Honeypot */
 
@@ -3668,9 +3782,7 @@
 
         const eventDate =
           sanitizeClientInput(
-            document
-              .getElementById("eventDate")
-              .value
+            eventDateInput.value
           );
 
         const message =
@@ -3823,6 +3935,11 @@
           "success"
         );
 
+        deliveryOptions.scrollIntoView({
+          behavior: "smooth",
+          block: "nearest"
+        });
+
 
         /*
           Never insert user input into HTML using innerHTML.
@@ -3858,4 +3975,3 @@
 
 </body>
 </html>
-```
